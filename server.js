@@ -10,6 +10,7 @@ const contactRoutes = require('./routes/contact');
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 5001;   // Changed from 5000 to 5001
 
 // Security middleware
