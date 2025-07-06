@@ -166,7 +166,7 @@ You can reply directly to this email to respond to ${name}.
           }
         });
 
-        await transport.verify();
+        await transporter.verify();
 
         const mailOptions = {
           from: `"Portfolio Contact" <${process.env.MAIL_USER}>`,
@@ -243,7 +243,7 @@ You can reply directly to this email to respond to ${name}.
           `
         };
 
-        const info = await transport.sendMail(mailOptions);
+        const info = await transporter.sendMail(mailOptions);
         
         successfulService = 'Gmail';
         mainEmailResponse = {
@@ -400,7 +400,7 @@ Visit my portfolio: https://shubhammeena.netlify.app
         
       } else if (successfulService === 'Gmail') {
         // Send auto-reply via Gmail SMTP
-        const transporter = nodemailer.createTransporter({
+        const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
             user: process.env.MAIL_USER,
