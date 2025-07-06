@@ -155,7 +155,7 @@ You can reply directly to this email to respond to ${name}.
     if (!successfulService && hasGmail) {
       gmailAttempted = true;
       try {
-        const transporter = nodemailer.createTransporter({
+        const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
             user: process.env.MAIL_USER,
@@ -166,7 +166,7 @@ You can reply directly to this email to respond to ${name}.
           }
         });
 
-        await transporter.verify();
+        await transport.verify();
 
         const mailOptions = {
           from: `"Portfolio Contact" <${process.env.MAIL_USER}>`,
@@ -243,7 +243,7 @@ You can reply directly to this email to respond to ${name}.
           `
         };
 
-        const info = await transporter.sendMail(mailOptions);
+        const info = await transport.sendMail(mailOptions);
         
         successfulService = 'Gmail';
         mainEmailResponse = {
